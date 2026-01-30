@@ -6,7 +6,7 @@ import CTA from "../Components/CTA";
 // import { Link, useLocation } from "react-router-dom";
 
 const LandingPage: React.FC = () => {
-  //   const location = useLocation();
+//   const location = useLocation();
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
       <Hero />

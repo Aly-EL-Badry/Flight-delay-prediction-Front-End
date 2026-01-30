@@ -1,10 +1,18 @@
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { Plane, Menu, X } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Plane, Menu, X, User, LogOut } from "lucide-react";
+import { useAuth } from "../Hooks/useAuth";
 
 const Header: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const location = useLocation();
+  const navigate = useNavigate();
+  const { user, logout, isAuthenticated } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/");
+  };
 
   return (
     <header className="fixed top-0 w-full bg-slate-900/95 backdrop-blur-sm border-b border-slate-800 z-50">
@@ -15,6 +23,7 @@ const Header: React.FC = () => {
             <span className="text-xl font-bold text-white">FlightPredict</span>
           </Link>
 
+          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             <Link
               to="/"
@@ -36,11 +45,31 @@ const Header: React.FC = () => {
             >
               Predict Flight
             </Link>
-            <button className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-              Sign In
-            </button>
+
+            {isAuthenticated ? (
+              <>
+                <div className="flex items-center gap-2 text-gray-300">
+                  <User className="w-4 h-4" />
+                  <span className="text-sm">{user?.username}</span>
+                </div>
+                <button
+                  onClick={handleLogout}
+                  className="flex items-center gap-2 px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+                >
+                  <LogOut className="w-4 h-4" />
+                  Logout
+                </button>
+              </>
+            ) : (
+              <Link to="/login">
+                <button className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                  Sign In
+                </button>
+              </Link>
+            )}
           </nav>
 
+          {/* Mobile Menu Button */}
           <button
             className="md:hidden text-white"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -53,6 +82,7 @@ const Header: React.FC = () => {
           </button>
         </div>
 
+        {/* Mobile Menu */}
         {mobileMenuOpen && (
           <div className="md:hidden py-4 border-t border-slate-800">
             <div className="flex flex-col gap-4">
@@ -76,9 +106,29 @@ const Header: React.FC = () => {
               >
                 Predict Flight
               </Link>
-              <button className="mx-4 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-                Sign In
-              </button>
+
+              {isAuthenticated ? (
+                <>
+                  <div className="px-4 py-2 text-gray-300 text-sm">
+                    Logged in as: {user?.username}
+                  </div>
+                  <button
+                    onClick={() => {
+                      handleLogout();
+                      setMobileMenuOpen(false);
+                    }}
+                    className="mx-4 px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+                  >
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <Link to="/login" onClick={() => setMobileMenuOpen(false)}>
+                  <button className="mx-4 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                    Sign In
+                  </button>
+                </Link>
+              )}
             </div>
           </div>
         )}
