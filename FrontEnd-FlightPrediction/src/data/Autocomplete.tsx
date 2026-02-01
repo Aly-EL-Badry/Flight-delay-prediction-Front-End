@@ -160,7 +160,7 @@ const AutocompleteInput: React.FC<AutocompleteInputProps> = ({
         <div
           role="listbox"
           aria-label={`${label} suggestions`}
-          className="absolute z-10 w-full mt-1 bg-slate-800 border border-slate-700 rounded-lg shadow-lg max-h-60 overflow-y-auto"
+          className="absolute z-10 w-full mt-1 bg-slate-800 border border-slate-700 rounded-lg shadow-lg max-h-48 overflow-y-auto scrollbar-custom sm:max-h-60 md:max-h-80"
         >
           {suggestions.map((option, idx) => (
             <div
@@ -172,17 +172,17 @@ const AutocompleteInput: React.FC<AutocompleteInputProps> = ({
                 e.preventDefault();
                 handleSuggestionClick(option);
               }}
-              className={`px-4 py-3 cursor-pointer border-b border-slate-700 last:border-b-0 transition-colors ${
+              className={`px-3 py-2 cursor-pointer border-b border-slate-700 last:border-b-0 transition-colors sm:px-4 sm:py-3 ${
                 idx === activeIndex ? "bg-slate-700" : ""
               }`}
             >
-              <div className="flex items-center justify-between">
-                <div className="flex-1">
-                  <div className="text-white text-sm font-medium">
+              <div className="flex items-center justify-between gap-2">
+                <div className="flex-1 min-w-0">
+                  <div className="text-white text-xs font-medium sm:text-sm truncate">
                     {option.label}
                   </div>
                 </div>
-                <div className="ml-2 px-2 py-1 bg-blue-600 text-white text-xs font-bold rounded">
+                <div className="px-2 py-1 bg-blue-600 text-white text-xs font-bold rounded flex-shrink-0">
                   {option.code}
                 </div>
               </div>
@@ -193,8 +193,8 @@ const AutocompleteInput: React.FC<AutocompleteInputProps> = ({
 
       {/* No results message */}
       {showSuggestions && inputValue && suggestions.length === 0 && (
-        <div className="absolute z-10 w-full mt-1 bg-slate-800 border border-slate-700 rounded-lg shadow-lg p-4">
-          <p className="text-gray-400 text-sm">
+        <div className="absolute z-10 w-full mt-1 bg-slate-800 border border-slate-700 rounded-lg shadow-lg p-3 scrollbar-custom sm:p-4">
+          <p className="text-gray-400 text-xs sm:text-sm">
             No matches found for "{inputValue}"
           </p>
         </div>

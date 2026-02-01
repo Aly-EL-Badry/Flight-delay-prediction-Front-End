@@ -133,14 +133,14 @@ const PredictionForm: React.FC = () => {
   };
 
   return (
-    <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-700 p-8 shadow-2xl">
-      <form onSubmit={handleSubmit} className="space-y-8">
+    <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-700 p-4 sm:p-8 shadow-2xl">
+      <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
         {/* Airport Information */}
         <div>
-          <h3 className="text-xl font-semibold text-white mb-4 border-b border-slate-700 pb-2">
+          <h3 className="text-lg sm:text-xl font-semibold text-white mb-3 sm:mb-4 border-b border-slate-700 pb-2">
             Airport Information
           </h3>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             <div>
               <AutocompleteInput
                 label="Origin Airport"
@@ -179,7 +179,7 @@ const PredictionForm: React.FC = () => {
 
         {/* Airline Information */}
         <div>
-          <h3 className="text-xl font-semibold text-white mb-4 border-b border-slate-700 pb-2">
+          <h3 className="text-lg sm:text-xl font-semibold text-white mb-3 sm:mb-4 border-b border-slate-700 pb-2">
             Airline Information
           </h3>
           <div>
@@ -198,12 +198,12 @@ const PredictionForm: React.FC = () => {
 
         {/* Date and Time Information */}
         <div>
-          <h3 className="text-xl font-semibold text-white mb-4 border-b border-slate-700 pb-2">
+          <h3 className="text-lg sm:text-xl font-semibold text-white mb-3 sm:mb-4 border-b border-slate-700 pb-2">
             Date & Time Information
           </h3>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 lg:gap-6">
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
+              <label className="block text-xs sm:text-sm font-medium text-gray-300 mb-2">
                 Year *
               </label>
               <input
@@ -211,7 +211,7 @@ const PredictionForm: React.FC = () => {
                 name="year"
                 value={formData.year}
                 onChange={handleChange}
-                className="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:outline-none focus:border-blue-500 transition-colors"
+                className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm bg-slate-900 border border-slate-700 rounded-lg text-white focus:outline-none focus:border-blue-500 transition-colors"
                 placeholder="2026"
                 min="2015"
                 max="2030"
@@ -220,34 +220,34 @@ const PredictionForm: React.FC = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
+              <label className="block text-xs sm:text-sm font-medium text-gray-300 mb-2">
                 Month *
               </label>
               <select
                 name="month"
                 value={formData.month}
                 onChange={handleChange}
-                className="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:outline-none focus:border-blue-500 transition-colors"
+                className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm bg-slate-900 border border-slate-700 rounded-lg text-white focus:outline-none focus:border-blue-500 transition-colors"
                 required
               >
                 <option value="">Select Month</option>
-                <option value="1">January (1)</option>
-                <option value="2">February (2)</option>
-                <option value="3">March (3)</option>
-                <option value="4">April (4)</option>
+                <option value="1">Jan (1)</option>
+                <option value="2">Feb (2)</option>
+                <option value="3">Mar (3)</option>
+                <option value="4">Apr (4)</option>
                 <option value="5">May (5)</option>
-                <option value="6">June (6)</option>
-                <option value="7">July (7)</option>
-                <option value="8">August (8)</option>
-                <option value="9">September (9)</option>
-                <option value="10">October (10)</option>
-                <option value="11">November (11)</option>
-                <option value="12">December (12)</option>
+                <option value="6">Jun (6)</option>
+                <option value="7">Jul (7)</option>
+                <option value="8">Aug (8)</option>
+                <option value="9">Sep (9)</option>
+                <option value="10">Oct (10)</option>
+                <option value="11">Nov (11)</option>
+                <option value="12">Dec (12)</option>
               </select>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
+              <label className="block text-xs sm:text-sm font-medium text-gray-300 mb-2">
                 Day *
               </label>
               <input
@@ -255,7 +255,7 @@ const PredictionForm: React.FC = () => {
                 name="day"
                 value={formData.day}
                 onChange={handleChange}
-                className="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:outline-none focus:border-blue-500 transition-colors"
+                className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm bg-slate-900 border border-slate-700 rounded-lg text-white focus:outline-none focus:border-blue-500 transition-colors"
                 placeholder="15"
                 min="1"
                 max="31"
@@ -263,25 +263,25 @@ const PredictionForm: React.FC = () => {
               />
             </div>
 
-            <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
+            <div className="col-span-2 md:col-span-1">
+              <label className="block text-xs sm:text-sm font-medium text-gray-300 mb-2">
                 Day of Week *
               </label>
               <select
                 name="dayOfWeek"
                 value={formData.dayOfWeek}
                 onChange={handleChange}
-                className="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:outline-none focus:border-blue-500 transition-colors"
+                className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm bg-slate-900 border border-slate-700 rounded-lg text-white focus:outline-none focus:border-blue-500 transition-colors"
                 required
               >
                 <option value="">Select Day</option>
-                <option value="0">Monday (0)</option>
-                <option value="1">Tuesday (1)</option>
-                <option value="2">Wednesday (2)</option>
-                <option value="3">Thursday (3)</option>
-                <option value="4">Friday (4)</option>
-                <option value="5">Saturday (5)</option>
-                <option value="6">Sunday (6)</option>
+                <option value="0">Mon (0)</option>
+                <option value="1">Tue (1)</option>
+                <option value="2">Wed (2)</option>
+                <option value="3">Thu (3)</option>
+                <option value="4">Fri (4)</option>
+                <option value="5">Sat (5)</option>
+                <option value="6">Sun (6)</option>
               </select>
               <p className="text-xs text-gray-500 mt-1">
                 0 = Monday, 6 = Sunday
@@ -289,7 +289,7 @@ const PredictionForm: React.FC = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
+              <label className="block text-xs sm:text-sm font-medium text-gray-300 mb-2">
                 Scheduled Time *
               </label>
               <input
@@ -297,14 +297,14 @@ const PredictionForm: React.FC = () => {
                 name="scheduledTime"
                 value={formData.scheduledTime}
                 onChange={handleChange}
-                className="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:outline-none focus:border-blue-500 transition-colors"
+                className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm bg-slate-900 border border-slate-700 rounded-lg text-white focus:outline-none focus:border-blue-500 transition-colors"
                 placeholder="14:30"
                 required
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
+              <label className="block text-xs sm:text-sm font-medium text-gray-300 mb-2">
                 Departure Delay
               </label>
               <input
@@ -312,7 +312,7 @@ const PredictionForm: React.FC = () => {
                 name="departureDelay"
                 value={formData.departureDelay}
                 onChange={handleChange}
-                className="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:outline-none focus:border-blue-500 transition-colors"
+                className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm bg-slate-900 border border-slate-700 rounded-lg text-white focus:outline-none focus:border-blue-500 transition-colors"
                 placeholder="0"
                 min="0"
                 required
@@ -326,12 +326,12 @@ const PredictionForm: React.FC = () => {
 
         {/* Flight Details */}
         <div>
-          <h3 className="text-xl font-semibold text-white mb-4 border-b border-slate-700 pb-2">
+          <h3 className="text-lg sm:text-xl font-semibold text-white mb-3 sm:mb-4 border-b border-slate-700 pb-2">
             Flight Details
           </h3>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
+              <label className="block text-xs sm:text-sm font-medium text-gray-300 mb-2">
                 Distance (miles) *
               </label>
               <input
@@ -339,7 +339,7 @@ const PredictionForm: React.FC = () => {
                 name="distance"
                 value={formData.distance}
                 onChange={handleChange}
-                className="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:outline-none focus:border-blue-500 transition-colors"
+                className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm bg-slate-900 border border-slate-700 rounded-lg text-white focus:outline-none focus:border-blue-500 transition-colors"
                 placeholder="2475"
                 min="0"
                 required
@@ -355,15 +355,15 @@ const PredictionForm: React.FC = () => {
         <button
           type="submit"
           disabled={isLoading}
-          className="w-full py-4 bg-blue-600 text-white text-lg font-semibold rounded-lg hover:bg-blue-700 disabled:bg-slate-600 disabled:cursor-not-allowed transition-all transform hover:scale-[1.02] shadow-lg shadow-blue-500/30"
+          className="w-full py-3 sm:py-4 bg-blue-600 text-sm sm:text-lg font-semibold rounded-lg hover:bg-blue-700 disabled:bg-slate-600 disabled:cursor-not-allowed transition-all transform hover:scale-[1.02] shadow-lg shadow-blue-500/30"
         >
           {isLoading ? "Predicting..." : "Predict Flight Delay"}
         </button>
       </form>
 
       {/* Results Section */}
-      <div className="mt-8 p-6 bg-slate-900/50 rounded-lg border border-slate-700">
-        <h3 className="text-lg font-semibold text-white mb-4">
+      <div className="mt-6 sm:mt-8 p-4 sm:p-6 bg-slate-900/50 rounded-lg border border-slate-700">
+        <h3 className="text-base sm:text-lg font-semibold text-white mb-4">
           Prediction Results
         </h3>
 
@@ -371,62 +371,56 @@ const PredictionForm: React.FC = () => {
         {isLoading && (
           <div className="text-center py-4">
             <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500 mx-auto mb-2"></div>
-            <p className="text-blue-400">Analyzing flight data...</p>
+            <p className="text-blue-400 text-sm">Analyzing flight data...</p>
           </div>
         )}
 
         {/* Error State */}
         {error && !isLoading && (
-          <div className="p-4 bg-red-500/20 border border-red-500 rounded-lg">
-            <p className="text-red-300 font-semibold mb-2">Error</p>
-            <p className="text-red-200">{error}</p>
+          <div className="p-3 sm:p-4 bg-red-500/20 border border-red-500 rounded-lg">
+            <p className="text-red-300 font-semibold mb-2 text-sm sm:text-base">
+              Error
+            </p>
+            <p className="text-red-200 text-xs sm:text-sm">{error}</p>
           </div>
         )}
 
         {/* Success State */}
         {prediction && !isLoading && !error && (
           <div className="space-y-3">
-            <div className="p-4 bg-slate-800 rounded-lg">
-              <p className="text-white mb-2">
+            <div className="p-3 sm:p-4 bg-slate-800 rounded-lg">
+              <p className="text-white mb-2 text-xs sm:text-sm">
                 <span className="font-semibold">Route:</span>{" "}
                 {formData.originAirport.toUpperCase()} →{" "}
                 {formData.destinationAirport.toUpperCase()}
               </p>
-              <p className="text-white mb-2">
+              <p className="text-white mb-2 text-xs sm:text-sm">
                 <span className="font-semibold">Airline:</span>{" "}
                 {formData.airline.toUpperCase()}
               </p>
-              <p className="text-white">
+              <p className="text-white text-xs sm:text-sm">
                 <span className="font-semibold">Date:</span> {formData.year}-
                 {formData.month}-{formData.day}
               </p>
             </div>
 
-            <div className="p-6 bg-gradient-to-br from-slate-800 to-slate-700 rounded-lg border-2 border-blue-500/30">
+            <div className="p-4 sm:p-6 bg-gradient-to-br from-slate-800 to-slate-700 rounded-lg border-2 border-blue-500/30">
               <p className="text-white mb-3 text-center">
-                <span className="text-sm font-semibold text-gray-400 block mb-2">
+                <span className="text-xs sm:text-sm font-semibold text-gray-400 block mb-2">
                   PREDICTION
                 </span>
-                <span className="text-3xl font-bold text-purple-400 block mb-1">
+                <span className="text-2xl sm:text-3xl font-bold text-purple-400 block mb-1">
                   {formatPrediction(prediction)}
                 </span>
               </p>
-              {/* <div className="border-t border-slate-600 pt-3 mt-3">
-                <p className="text-white text-center">
-                  <span className="font-semibold">Confidence:</span>{" "}
-                  <span className="text-blue-400 text-xl font-bold">
-                    {(prediction.confidence * 100).toFixed(1)}%
-                  </span>
-                </p>
-              </div> */}
             </div>
           </div>
         )}
 
         {/* Empty State */}
         {!prediction && !isLoading && !error && (
-          <div className="text-center py-8">
-            <p className="text-gray-400 text-sm">
+          <div className="text-center py-6 sm:py-8">
+            <p className="text-gray-400 text-xs sm:text-sm">
               Fill in all the flight details above and click "Predict Flight
               Delay"
             </p>
@@ -438,8 +432,8 @@ const PredictionForm: React.FC = () => {
       </div>
 
       {/* Helper Info Box */}
-      <div className="mt-4 p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
-        <p className="text-blue-300 text-sm font-semibold mb-2">
+      <div className="mt-4 p-3 sm:p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
+        <p className="text-blue-300 text-xs sm:text-sm font-semibold mb-2">
           💡 Quick Tips:
         </p>
         <ul className="text-blue-200 text-xs space-y-1">
