@@ -2,7 +2,6 @@ import React from "react";
 import { Clock, TrendingUp, Plane } from "lucide-react";
 import type { Feature } from "../types"; // you have to import it as a type
 
-// ========== FEATURES COMPONENT ==========
 const Features: React.FC = () => {
   const features: Feature[] = [
     {
@@ -14,8 +13,7 @@ const Features: React.FC = () => {
     {
       icon: <TrendingUp className="w-8 h-8 text-blue-500" />,
       title: "High Accuracy",
-      description:
-        "Our AI model is trained on millions of flight records to provide reliable predictions.",
+      description: "Our AI model is trained to provide reliable predictions.",
     },
     {
       icon: <Plane className="w-8 h-8 text-blue-500" />,

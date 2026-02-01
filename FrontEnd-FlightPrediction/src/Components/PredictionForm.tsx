@@ -1,10 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AutocompleteInput from "../data/Autocomplete";
 import { AIRLINES } from "../data/airlinesData";
 import { AIRPORTS } from "../data/airportsData";
 
+const API_URL = "https://flight-delay-prediction-system.fly.dev/predict";
+
 function timeToMinutes(timeStr: string): number {
-  const [hours, minutes] = timeStr.split(":").map(Number);
+  const [time, modifier] = timeStr.split(" ");
+  let [hours, minutes] = time.split(":").map(Number);
+
+  if (modifier === "PM" && hours !== 12) {
+    hours += 12;
+  } else if (modifier === "AM" && hours === 12) {
+    hours = 0;
+  }
+
   return hours * 60 + minutes;
 }
 
@@ -59,6 +69,12 @@ const PredictionForm: React.FC = () => {
   const [prediction, setPrediction] = useState<PredictionResult | null>(null);
   const [error, setError] = useState<string>("");
 
+  useEffect(() => {
+    fetch(API_URL, {
+      method: "POST",
+    }).catch(() => {});
+  }, []);
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ): void => {
@@ -91,9 +107,6 @@ const PredictionForm: React.FC = () => {
 
       console.log("Sending to API:", apiPayload);
 
-      // TODO: Replace with your actual API URL
-      const API_URL = "https://flight-delay-prediction-system.fly.dev/predict";
-
       const response = await fetch(API_URL, {
         method: "POST",
         headers: {
@@ -111,7 +124,6 @@ const PredictionForm: React.FC = () => {
       const result = await response.json();
       console.log("API response:", result);
 
-      // Parse response (customize based on your API)
       setPrediction({
         prediction: String(result.predicted_arrival_delay_minutes ?? "Unknown"),
       });
@@ -298,7 +310,6 @@ const PredictionForm: React.FC = () => {
                 value={formData.scheduledTime}
                 onChange={handleChange}
                 className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm bg-slate-900 border border-slate-700 rounded-lg text-white focus:outline-none focus:border-blue-500 transition-colors"
-                placeholder="14:30"
                 required
               />
             </div>
