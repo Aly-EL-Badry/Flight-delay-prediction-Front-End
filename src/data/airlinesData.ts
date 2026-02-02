@@ -1,0 +1,16 @@
+export const AIRLINES = [
+  { code: "UA", label: "United Air Lines Inc." },
+  { code: "AA", label: "American Airlines Inc." },
+  { code: "DL", label: "Delta Air Lines Inc." },
+  { code: "WN", label: "Southwest Airlines Co." },
+  { code: "B6", label: "JetBlue Airways" },
+  { code: "AS", label: "Alaska Airlines Inc." },
+  { code: "NK", label: "Spirit Air Lines" },
+  { code: "F9", label: "Frontier Airlines Inc." },
+  { code: "HA", label: "Hawaiian Airlines Inc." },
+  { code: "VX", label: "Virgin America" },
+  { code: "US", label: "US Airways Inc." },
+  { code: "OO", label: "Skywest Airlines Inc." },
+  { code: "EV", label: "Atlantic Southeast Airlines" },
+  { code: "MQ", label: "American Eagle Airlines Inc." },
+];
