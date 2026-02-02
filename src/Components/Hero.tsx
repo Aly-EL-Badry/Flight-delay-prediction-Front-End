@@ -26,7 +26,7 @@ const Hero: React.FC = () => {
       className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-cover bg-center bg-no-repeat"
       style={{
         backgroundImage:
-          "linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url('/assets/flight-background1.jpg')",
+          "linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url('../assets/flight-background1.jpg')",
       }}
     >
       <div className="max-w-7xl mx-auto text-center">
